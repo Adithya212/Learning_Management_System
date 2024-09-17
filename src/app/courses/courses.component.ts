@@ -4,20 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-user-register',
+  selector: 'app-courses',
   standalone: true,
-  imports: [DatePipe, FormsModule, NgIf,RouterLink,RouterOutlet],
-  templateUrl: './user-register.component.html',
-  styleUrl: './user-register.component.css'
+  imports: [DatePipe,NgIf,RouterOutlet,RouterLink],
+  templateUrl: './courses.component.html',
+  styleUrl: './courses.component.css'
 })
-export class UserRegisterComponent {
+export class CoursesComponent {
   isMenuOpen = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  
   }
-
-
   currentDate: Date=new Date();
-
 }
