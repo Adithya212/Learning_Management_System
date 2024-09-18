@@ -6,11 +6,12 @@ import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomeComponent } from './home/home.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HomeComponent, RouterLink,UserRegisterComponent],
+  imports: [RouterOutlet,HomeComponent, RouterLink,UserRegisterComponent,AddCourseComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
