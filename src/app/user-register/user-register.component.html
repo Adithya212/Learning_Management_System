@@ -15,7 +15,12 @@
         <div class="hidden md:flex space-x-8 items-center">
           <a routerLink="home" class="nav-link">HOME</a>
           <a routerLink="about" routerLinkActive="active" class="nav-link">ABOUT</a>
-          <a routerLink="courses" class="nav-link">COURSES</a>
+          <a routerLink="courses" class="nav-link">ADMIN</a>
+         
+            <a class="nav-link dropdown-toggle" routerLink="mycourses" role="button" data-bs-toggle="dropdown" >
+              myCourses
+            </a>
+            
           <a routerLink="contact" class="nav-link">CONTACT</a>
           <h2  class="dates" style="color: brown; font-style: italic; float: left;">{{currentDate | date}}</h2>
         </div>

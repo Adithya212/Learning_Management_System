@@ -1,0 +1,44 @@
+<div class="mycourses-container">
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Search courses..." 
+        [(ngModel)]="searchTerm" 
+        (input)="onSearch()" 
+        class="search-input"
+      />
+    </div>
+  
+    <!-- Filter by Catalog -->
+    <div class="filters">
+      <label>Filter by Category:</label>
+      <select [(ngModel)]="selectedCategory" (change)="onCategoryChange($event)">
+        <option value="all">All</option>
+        <option value="java">Java</option>
+        <option value="vue">Vue.js</option>
+        <option value="ruby">Ruby</option>
+        <option value="javascript">JavaScript</option>
+        <option value="c++">C++</option>
+        <option value="c">C</option>
+        <option value="c#">C#</option>
+        <option value="python">Python</option>
+      </select>
+    </div>
+  
+    <!-- Course Catalog List -->
+    <div class="course-catalogs">
+      <div class="course-card" *ngFor="let course of filteredCourses">
+        <div class="course-header">
+          <h3>{{ course.title }}</h3>
+          <p class="category-label">{{ course.category | uppercase }}</p>
+        </div>
+        <p class="course-description">{{ course.description }}</p>
+        <ul class="course-features">
+          <li *ngFor="let feature of course.features">{{ feature }}</li>
+        </ul>
+        <button (click)="enroll(course.id)" class="enroll-button">Enroll Now</button>
+      </div>
+    </div>
+  </div>
+  

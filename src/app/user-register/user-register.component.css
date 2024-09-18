@@ -1,56 +1,67 @@
-/* Custom CSS for Nav Links */
+/* General Nav Link Styling */
 .nav-link {
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #4a5568; /* Tailwind gray-700 */
-    position: relative;
-    padding-bottom: 0.5rem;
-    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-  }
-  
-  .nav-link:hover {
-    color: #4f46e5; /* Tailwind indigo-600 */
-  }
-  
-  /* Hover underline effect */
-  .nav-link::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: #4f46e5; /* Tailwind indigo-600 */
-    transition: width 0.3s ease-in-out;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-  
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  
-  /* Mobile Menu Links */
-  a.block {
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #4a5568; /* Tailwind gray-700 */
-  }
-  
-  a.block:hover {
-    color: #4f46e5; /* Tailwind indigo-600 */
-    background-color: #ebf4ff; /* Tailwind indigo-50 */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
-  
-  /* Mobile Menu Transition */
-  @media (max-width: 767px) {
-    nav div.md\\:hidden {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4a5568; /* Tailwind gray-700 */
+  position: relative;
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #4f46e5; /* Tailwind indigo-600 */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover underline effect */
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5; /* Tailwind indigo-600 */
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Styling for Active Page */
+.nav-link.active {
+  color: #4f46e5; /* Tailwind indigo-600 */
+  border-bottom: 2px solid #4f46e5;
+}
+
+/* Mobile Menu Links */
+a.block {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #4a5568; /* Tailwind gray-700 */
+  padding: 0.5rem;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a.block:hover {
+  color: #4f46e5; /* Tailwind indigo-600 */
+  background-color: #ebf4ff; /* Tailwind indigo-50 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mobile Menu Transition */
+@media (max-width: 767px) {
+  nav div.md\\:hidden {
       transition: height 0.3s ease;
-    }
   }
+}
+
   
 
   /* Optional to add more focus to the button and text */
