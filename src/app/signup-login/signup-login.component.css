@@ -1,0 +1,168 @@
+/* Keyframe Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container Styles */
+.signup-login-container {
+  padding: 40px;
+  max-width: 600px;
+  margin: 50px auto;
+  background: linear-gradient(135deg, #f0f0f0, #d9e7ff);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+}
+
+.signup-login-container:hover {
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* Tab Button Styles */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.tab-button {
+  padding: 15px 30px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+  border-radius: 50px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover::before,
+.tab-button.active::before {
+  width: 60%;
+  left: 20%;
+}
+
+.tab-button:hover {
+  color: #007bff;
+}
+
+.tab-button.active {
+  color: #007bff;
+}
+
+/* Form Animation */
+.animate__fadeIn {
+  animation: slideIn 0.6s ease forwards;
+}
+
+/* Form Styles */
+.form-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.form-input {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  font-size: 16px;
+  background: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* Submit Button Styles */
+.submit-button {
+  padding: 14px 0;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(0, 123, 255, 0.4);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+}
+
+/* Gradient Background for Button Hover */
+.submit-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #007bff, #00d4ff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.submit-button:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-login-container {
+    padding: 30px;
+  }
+
+  .form-input {
+    font-size: 14px;
+  }
+
+  .submit-button {
+    font-size: 16px;
+  }
+
+  .tab-button {
+    font-size: 16px;
+  }
+}

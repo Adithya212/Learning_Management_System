@@ -8,6 +8,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HomeComponent } from './home/home.component';
 import { MycoursesComponent } from './mycourses/mycourses.component';
+import { SignupLoginComponent } from './signup-login/signup-login.component';
 
 import { UserRegisterComponent } from './user-register/user-register.component';
 
@@ -31,6 +32,8 @@ export const routes: Routes = [
         { path: 'course-management', component: AdminCourseManagementComponent },
         { path: 'progress-management', component: AdminProgressTrackingComponent },
         { path: 'feedback-management', component: FeedbackComponent },
-    ]}
+    ]},
 
+    {path:'forms',component:SignupLoginComponent},
+    {path:'', redirectTo:'mycourses', pathMatch: 'full'},
 ];

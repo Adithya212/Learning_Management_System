@@ -1,12 +1,12 @@
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mycourses',
   standalone: true,
-  imports: [RouterLink,NgFor,FormsModule,UpperCasePipe],
+  imports: [RouterLink,NgFor,NgIf,FormsModule,UpperCasePipe],
   templateUrl: './mycourses.component.html',
   styleUrl: './mycourses.component.css'
 })
@@ -14,6 +14,7 @@ export class MycoursesComponent implements OnInit {
 
   searchTerm: string = '';
   selectedCategory: string = 'all';
+  isLoggedIn: boolean = false;
 
   // Sample list of courses with features
   courses = [
@@ -84,10 +85,11 @@ export class MycoursesComponent implements OnInit {
 
   filteredCourses = this.courses;
 
-  constructor() {}
+  // constructor() {}
 
   ngOnInit(): void {
     this.filteredCourses = this.courses;
+    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   }
 
   // Function to filter courses based on the search term
@@ -108,7 +110,25 @@ export class MycoursesComponent implements OnInit {
 
   // Function to handle enroll action
   enroll(courseId: number): void {
-    alert(`You have enrolled in course ID: ${courseId}`);
-    // Add enrollment logic here
+    if (this.isLoggedIn) {
+      alert(`You have enrolled in course ID: ${courseId}`);
+    } else {
+      alert('Please login to enroll');
+    }
   }
+
+ 
+
+  constructor(private router: Router) {}
+
+  goToSignupLogin(): void {
+    
+    this.router.navigate(['/forms']); // Navigates to the signup/login component
+   
+  }
+
+  // goToSignupLogin(): void {
+  //   alert(`opened`); // Navigates to the signup/login component
+  // }
+
 }
