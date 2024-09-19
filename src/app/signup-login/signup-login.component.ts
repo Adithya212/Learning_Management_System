@@ -1,26 +1,34 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, NgModule} from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-signup-login',
   standalone: true,
-  imports: [CommonModule,RouterLink,FormsModule],
+  imports: [CommonModule,RouterLink,FormsModule,ReactiveFormsModule],
   templateUrl: './signup-login.component.html',
   styleUrl: './signup-login.component.css'
 })
 export class SignupLoginComponent {
   isLogin: boolean = true;
+  loginForm: FormGroup;
+  signupForm: FormGroup;
 
-  // Data models for form inputs
-  loginData:any = { email: '',
-                    password: '' };
-  signupData = { username: '', email: '', password: '' };
-  router: any;
+  constructor(private formBuilder: FormBuilder, private router: Router) {
+    // Initialize the login and signup forms with basic required validation
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
 
-  constructor(private routerS: Router) {}
+    this.signupForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   // Function to toggle between Login and Signup tabs
   toggleTab(isLoginTab: boolean): void {
@@ -28,41 +36,26 @@ export class SignupLoginComponent {
   }
 
   // Login function
-  // login(): void {
-  //   // Implement login logic here
-  //   alert(`Logged in as: ${this.loginData.username}`);
-  //   // this.accService.login(this.loginData).subscribe((res:any)=>{
-
-  //   // })
-  // }
-
-
-
   login() {
-    // Perform login logic here
-    if (this.loginData.username && this.loginData.password) {
-      // Assuming login is successful, redirect to the MyCourses page
-
-      alert(`Logged SUCCESSFULLY`)
+    if (this.loginForm.valid) {
+      console.log('Login form data:', this.loginForm.value);
+      alert('Logged in successfully!');
       localStorage.setItem('isLoggedIn', 'true');
-      this.routerS.navigate(['/mycourses']);  // Redirect to MyCourses
+      this.router.navigate(['/mycourses']);
     } else {
-      // Handle login failure
-      console.error('Invalid login details');
+      alert('Please fill in all fields.');
     }
   }
 
   // Signup function
   signup() {
-    // Perform signup logic here
-    if (this.signupData.username && this.signupData.email && this.signupData.password) {
-      // Assuming signup is successful, redirect to the MyCourses page
-      alert(`SignUp Successful`)
+    if (this.signupForm.valid) {
+      console.log('Signup form data:', this.signupForm.value);
+      alert('Signup successful!');
       localStorage.setItem('isLoggedIn', 'true');
-      this.routerS.navigate(['/mycourses']);  // Redirect to MyCourses
+      this.router.navigate(['/mycourses']);
     } else {
-      // Handle signup failure
-      console.error('Invalid signup details');
+      alert('Please fill in all fields.');
     }
   }
 }
