@@ -1,0 +1,27 @@
+<div class="signup-login-container">
+  <div class="tabs">
+    <button class="tab-button" [ngClass]="{ 'active': isLogin }" (click)="toggleTab(true)">Login</button>
+    <button class="tab-button" [ngClass]="{ 'active': !isLogin }" (click)="toggleTab(false)">Signup</button>
+  </div>
+
+  <!-- Login Form -->
+  <div *ngIf="isLogin" class="login-form">
+    <h3 class="form-title">Login</h3>
+    <form (ngSubmit)="login()" class="form-body">
+      <input class="form-input" type="text" placeholder="Username" [(ngModel)]="loginData.username" name="username" required />
+      <input class="form-input" type="password" placeholder="Password" [(ngModel)]="loginData.password" name="password" required />
+      <button type="submit" class="submit-button">Login</button>
+    </form>
+  </div>
+
+  <!-- Signup Form -->
+  <div *ngIf="!isLogin" class="signup-form">
+    <h3 class="form-title">Signup</h3>
+    <form (ngSubmit)="signup()" class="form-body">
+      <input class="form-input" type="text" placeholder="Username" [(ngModel)]="signupData.username" name="signupUsername" required />
+      <input class="form-input" type="email" placeholder="Email" [(ngModel)]="signupData.email" name="email" required />
+      <input class="form-input" type="password" placeholder="Password" [(ngModel)]="signupData.password" name="signupPassword" required />
+      <button type="submit" class="submit-button">Signup</button>
+    </form>
+  </div>
+</div>

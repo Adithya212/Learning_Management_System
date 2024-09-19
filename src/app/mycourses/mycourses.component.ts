@@ -14,7 +14,7 @@ export interface Course {
 @Component({
   selector: 'app-mycourses',
   standalone: true,
-  imports: [RouterLink,NgFor,FormsModule,UpperCasePipe],
+  imports: [RouterLink,NgFor,NgIf,FormsModule,UpperCasePipe],
   templateUrl: './mycourses.component.html',
   styleUrl: './mycourses.component.css'
 })
@@ -130,7 +130,25 @@ export class MycoursesComponent{
 
   // Function to handle enroll action
   enroll(courseId: number): void {
-    alert(`You have enrolled in course ID: ${courseId}`);
-    // Add enrollment logic here
+    if (this.isLoggedIn) {
+      alert(`You have enrolled in course ID: ${courseId}`);
+    } else {
+      alert('Please login to enroll');
+    }
   }
+
+ 
+
+  constructor(private router: Router) {}
+
+  goToSignupLogin(): void {
+    
+    this.router.navigate(['/forms']); // Navigates to the signup/login component
+   
+  }
+
+  // goToSignupLogin(): void {
+  //   alert(`opened`); // Navigates to the signup/login component
+  // }
+
 }

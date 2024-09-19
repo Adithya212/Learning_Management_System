@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule, FormSubmittedEvent } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-admin-user-management',
   standalone: true,
-  imports: [RouterLink,NgFor,FormsModule],
+  imports: [RouterLink,NgFor,FormsModule,NgIf],
   templateUrl: './admin-user-management.component.html',
   styleUrl: './admin-user-management.component.css'
 })

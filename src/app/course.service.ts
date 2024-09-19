@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CourseService {
   private apiUrl = 'http://localhost:8080/api/courses';  // Spring Boot API
-
+  
   constructor(private http: HttpClient) {}
 
   getCourses(): Observable<any> {

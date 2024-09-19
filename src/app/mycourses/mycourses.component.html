@@ -8,7 +8,16 @@
         (input)="onSearch()" 
         class="search-input"
       />
+<<<<<<< HEAD
     </div>  
+=======
+
+      <button routerLink="forms" (click)="goToSignupLogin()" class="signup-login-button">
+        Signup/Login
+      </button>
+    </div>
+  
+>>>>>>> ffe22f485e557b817b8cada8c4c4fff81db18594
     <!-- Filter by Catalog -->
     <div class="filters">
       <label>Filter by Category:</label>
@@ -36,8 +45,18 @@
         <ul class="course-features">
           <li *ngFor="let feature of course.features">{{ feature }}</li>
         </ul>
-        <button (click)="enroll(course.id)" class="enroll-button">Enroll Now</button>
-      </div>
+        <!-- <button (click)="enroll(course.id)" class="enroll-button">Enroll Now</button> -->
+        <div class="tooltip-container">
+            <button 
+              (click)="enroll(course.id)" 
+              class="enroll-button" 
+              [disabled]="!isLoggedIn">
+              Enroll Now
+            </button>
+            <span class="tooltip-text" *ngIf="!isLoggedIn">Please login to enroll</span>
+          </div>
+
+    </div>
     </div>
     <!-- <div *ngFor="let course of courses">
       <div class="course-card">
@@ -48,4 +67,7 @@
       </div>
     </div> -->
   </div>
+
+
+ 
   
