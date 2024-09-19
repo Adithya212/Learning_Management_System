@@ -8,12 +8,16 @@
         (input)="onSearch()" 
         class="search-input"
       />
+<<<<<<< HEAD
+    </div>  
+=======
 
       <button routerLink="forms" (click)="goToSignupLogin()" class="signup-login-button">
         Signup/Login
       </button>
     </div>
   
+>>>>>>> ffe22f485e557b817b8cada8c4c4fff81db18594
     <!-- Filter by Catalog -->
     <div class="filters">
       <label>Filter by Category:</label>
@@ -32,9 +36,9 @@
   
     <!-- Course Catalog List -->
     <div class="course-catalogs">
-      <div class="course-card" *ngFor="let course of filteredCourses">
+      <div class="course-card" *ngFor="let course of courses">
         <div class="course-header">
-          <h3>{{ course.title }}</h3>
+          <h3>{{ course.courseName }}</h3>
           <p class="category-label">{{ course.category | uppercase }}</p>
         </div>
         <p class="course-description">{{ course.description }}</p>
@@ -54,6 +58,14 @@
 
     </div>
     </div>
+    <!-- <div *ngFor="let course of courses">
+      <div class="course-card">
+        <h3>{{ course.courseName }}</h3>
+  
+        <p>{{course.description}}</p>
+  
+      </div>
+    </div> -->
   </div>
 
 

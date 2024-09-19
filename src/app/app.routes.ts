@@ -11,6 +11,7 @@ import { MycoursesComponent } from './mycourses/mycourses.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch: 'full'},
@@ -25,11 +26,14 @@ export const routes: Routes = [
 
     {path:'mycourses', component:MycoursesComponent},
     {path:'mycourses/:id', component:MycoursesComponent},
-   
+    { path: 'add-course', component: AddCourseComponent },
 
     { path: 'admin', component: CoursesComponent, children: [
         { path: 'user-management', component: AdminUserManagementComponent },
-        { path: 'course-management', component: AdminCourseManagementComponent },
+        { path: 'course-management', component: AdminCourseManagementComponent, children: [
+            { path: 'add-course', component: AddCourseComponent }
+          ]
+        },
         { path: 'progress-management', component: AdminProgressTrackingComponent },
         { path: 'feedback-management', component: FeedbackComponent },
     ]},

@@ -1,1 +1,14 @@
-<p>admin-course-management works!</p>
+<h1>Admin Dashboard</h1>
+<button (click)="onAddCourseClick()">Add Course</button>
+
+<div *ngIf="courses.length > 0">
+  <h2>Courses</h2>
+  <div *ngFor="let course of courses">
+    <div class="course-card">
+      <h3>{{ course.courseName }}</h3>
+
+      <p>{{course.description}}</p>
+
+    </div>
+  </div>
+ </div>
