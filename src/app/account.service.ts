@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,9 +7,23 @@ import { Observable } from 'rxjs';
 })
 export class AccountService {
 
-  // constructor(private http:HttpClient) { }
+  private baseUrl = 'http://localhost:8000/auth';  // Backend URL
 
-  // login()(obj:any): Observable<any>{
-  //   return this.http.post('http://localhost:40392/api/Account', obj);
-  // }
+  constructor(private http: HttpClient) { }
+
+  // Signup API call
+  signup(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/signup`, userData);
+  }
+
+  // Login API call
+  login(credentials: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, credentials);
+  }
+
+  // Token validation API call
+  validateToken(token: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    return this.http.get(`${this.baseUrl}/validate-token`, { headers });
+  }
 }

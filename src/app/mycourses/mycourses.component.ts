@@ -1,154 +1,131 @@
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CourseService } from '../course.service';
+
 export interface Course {
   id: number;
   courseName: string;
   category: string;
-  enrolledDate: string;
-  features: string[];
+  // enrolledDate: string;
+  features: string;
   description: string;
 }
+
 @Component({
   selector: 'app-mycourses',
   standalone: true,
-  imports: [RouterLink,NgFor,NgIf,FormsModule,UpperCasePipe],
+  imports: [RouterLink, NgFor, NgIf, FormsModule, UpperCasePipe],
   templateUrl: './mycourses.component.html',
-  styleUrl: './mycourses.component.css'
+  styleUrls: ['./mycourses.component.css'],
+  encapsulation: ViewEncapsulation.None, 
 })
-export class MycoursesComponent{
-  courses: Course[]= [];
-
-  constructor(private router: Router, private courseService: CourseService) {}
+export class MycoursesComponent implements OnInit {
   searchTerm: string = '';
   selectedCategory: string = 'all';
-  // console.log(helloi)
-  // Sample list of courses with features
-  // courses = [
-  //   {
-  //     id: 1,
-  //     courseName: 'Java Basics',
-  //     category: 'java',
-  //     description: 'Learn the basics of Java programming.',
-  //     features:'Basic Syntax'
-  //   }]
-  //   {
-  //     id: 2,
-  //     title: 'Advanced Java',
-  //     category: 'java',
-  //     description: 'Master Java with advanced topics.',
-  //     features: ['Multithreading', 'Streams API', 'Design Patterns']
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Vue.js for Beginners',
-  //     category: 'vue',
-  //     description: 'Start building modern web apps with Vue.js.',
-  //     features: ['Vue Directives', 'Component Lifecycle', 'Vue Router']
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'Ruby on Rails',
-  //     category: 'ruby',
-  //     description: 'Web development with Ruby on Rails.',
-  //     features: ['MVC Architecture', 'Active Record', 'REST APIs']
-  //   },
-  //   {
-  //     id: 5,
-  //     title: 'JavaScript Essentials',
-  //     category: 'javascript',
-  //     description: 'Become proficient in JavaScript.',
-  //     features: ['DOM Manipulation', 'ES6 Features', 'Asynchronous JS']
-  //   },
-  //   {
-  //     id: 6,
-  //     title: 'C++ Programming',
-  //     category: 'c++',
-  //     description: 'Dive deep into C++ programming.',
-  //     features: ['Memory Management', 'STL', 'Object-Oriented Programming']
-  //   },
-  //   {
-  //     id: 7,
-  //     title: 'C Programming Basics',
-  //     category: 'c',
-  //     description: 'Get started with C programming.',
-  //     features: ['Pointers', 'Memory Allocation', 'Data Types']
-  //   },
-  //   {
-  //     id: 8,
-  //     title: 'C# for Developers',
-  //     category: 'c#',
-  //     description: 'Develop modern apps with C#.',
-  //     features: ['LINQ', 'Entity Framework', 'Asynchronous Programming']
-  //   },
-  //   {
-  //     id: 9,
-  //     title: 'Python for Data Science',
-  //     category: 'python',
-  //     description: 'Python for data analysis and machine learning.',
-  //     features: ['Pandas', 'NumPy', 'Scikit-learn']
-  //   }
-  // ];
+  isLoggedIn: boolean = false; // Default to not logged in
 
-  filteredCourses = this.courses;
+  courses: Course[] = [
+    {
+      id: 1,
+      courseName: 'Java Basics',
+      category: 'java',
+      description: 'Learn the basics of Java programming.',
+      features: 'Basic Syntax, OOP Concepts, Exception Handling'
+    },
+    {
+      id: 2,
+      courseName: 'Vue.js for Beginners',
+      category: 'vue',
+      description: 'An introduction to Vue.js framework.',
+      features: 'Vue CLI, Components, Vue Router'
+    },
+    {
+      id: 3,
+      courseName: 'Mastering Ruby',
+      category: 'ruby',
+      description: 'Deep dive into Ruby programming.',
+      features: 'Ruby Syntax, Rails Framework, Gems'
+    },
+    {
+      id: 4,
+      courseName: 'JavaScript Essentials',
+      category: 'javascript',
+      description: 'Learn the core concepts of JavaScript.',
+      features: 'ES6, Async/Await, DOM Manipulation'
+    },
+    {
+      id: 5,
+      courseName: 'C++ Fundamentals',
+      category: 'c++',
+      description: 'Understand the basics of C++ programming.',
+      features: 'Data Types, Functions, Pointers'
+    },
+    {
+      id: 6,
+      courseName: 'C Programming Basics',
+      category: 'c',
+      description: 'Get started with C programming.',
+      features: 'Control Structures, Functions, Arrays'
+    },
+    {
+      id: 7,
+      courseName: 'C# for Developers',
+      category: 'c#',
+      description: 'Develop modern apps with C#.',
+      features: 'Asynchronous Programming, .NET Framework'
+    },
+    {
+      id: 8,
+      courseName: 'Python for Data Science',
+      category: 'python',
+      description: 'Harness the power of Python for data analysis.',
+      features: 'NumPy, Pandas, Data Visualization'
+    },
+  ];
 
+  filteredCourses: Course[] = this.courses;
+
+  constructor(private router: Router, private courseService: CourseService) {}
 
   ngOnInit(): void {
-    console.log(this.courses);
     this.loadCourses();
-    console.log(this.courses);
-    this.filteredCourses = this.courses;
-    console.log(this.filteredCourses);
-    debugger;
-    // console.log(this.filteredCourses);
-    // this.loadCourses();
   }
 
-  loadCourses() {
+  loadCourses(): void {
     this.courseService.getCourses().subscribe((data: any) => {
       this.courses = data;
+      this.filteredCourses = this.courses; // Update filteredCourses after loading
+      this.onSearch(); // Trigger filtering
     });
   }
 
-  // Function to filter courses based on the search term
+  // Function to filter courses based on the search term and category
   onSearch(): void {
     this.filteredCourses = this.courses.filter(course => 
       course.courseName.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-      (this.selectedCategory === 'all' || course. category === this.selectedCategory)
+      (this.selectedCategory === 'all' || course.category === this.selectedCategory)
     );
   }
 
   // Function to handle category change
   onCategoryChange(event: any): void {
-    this.filteredCourses = this.courses.filter(course => 
-      (this.selectedCategory === 'all' || course.category === this.selectedCategory) &&
-      course.courseName.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    this.onSearch(); // Re-filter the courses whenever the category changes
   }
 
   // Function to handle enroll action
   enroll(courseId: number): void {
     if (this.isLoggedIn) {
       alert(`You have enrolled in course ID: ${courseId}`);
+      this.router.navigate(['/courses', courseId]); // Navigate to course page after enrollment
     } else {
       alert('Please login to enroll');
     }
   }
 
- 
-
-  constructor(private router: Router) {}
-
+  // Function to handle navigation to login/signup page
   goToSignupLogin(): void {
-    
     this.router.navigate(['/forms']); // Navigates to the signup/login component
-   
   }
-
-  // goToSignupLogin(): void {
-  //   alert(`opened`); // Navigates to the signup/login component
-  // }
-
 }

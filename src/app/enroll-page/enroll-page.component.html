@@ -1,0 +1,21 @@
+<div class="enroll-container">
+    <h2>Course Video</h2>
+    
+    <!-- YouTube Video -->
+    <div class="video-container">
+        <!-- Embed YouTube video -->
+        <iframe id="player-iframe" [src]="videoUrl | safeUrl" frameborder="0" allowfullscreen></iframe>
+      </div>
+      
+      <!-- Take Assessment button, enabled only when the video is completed -->
+      <a [ngClass]="{ 'disabled': !isVideoCompleted }" [attr.href]="isVideoCompleted ? assessmentLink : null">
+        Take Assessment
+      </a>
+      
+  
+    <!-- Feedback form (always enabled) -->
+    <div class="feedback">
+      <a href="https://forms.gle/yourFeedbackFormLink" target="_blank">Submit Feedback</a>
+    </div>
+  </div>
+  

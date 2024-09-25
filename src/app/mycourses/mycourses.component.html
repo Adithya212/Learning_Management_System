@@ -1,73 +1,47 @@
 <div class="mycourses-container">
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <input 
-        type="text" 
-        placeholder="Search courses..." 
-        [(ngModel)]="searchTerm" 
-        (input)="onSearch()" 
-        class="search-input"
-      />
-<<<<<<< HEAD
-    </div>  
-=======
-
+  <div class="header-container">
+    <div class="search-filter-wrapper">
+      <div class="search-bar">
+        <input type="text" placeholder="Search courses..." [(ngModel)]="searchTerm" (input)="onSearch()" class="search-input" />
+      </div>
+      <div class="filters">
+        <select [(ngModel)]="selectedCategory" (change)="onCategoryChange($event)">
+          <option value="all">All</option>
+          <option value="java">Java</option>
+          <option value="vue">Vue.js</option>
+          <option value="ruby">Ruby</option>
+          <option value="javascript">JavaScript</option>
+          <option value="c++">C++</option>
+          <option value="c">C</option>
+          <option value="c#">C#</option>
+          <option value="python">Python</option>
+        </select>
+      </div>
+    </div>
+    <div class="login-button-wrapper">
       <button routerLink="forms" (click)="goToSignupLogin()" class="signup-login-button">
         Signup/Login
       </button>
     </div>
-  
->>>>>>> ffe22f485e557b817b8cada8c4c4fff81db18594
-    <!-- Filter by Catalog -->
-    <div class="filters">
-      <label>Filter by Category:</label>
-      <select [(ngModel)]="selectedCategory" (change)="onCategoryChange($event)">
-        <option value="all">All</option>
-        <option value="java">Java</option>
-        <option value="vue">Vue.js</option>
-        <option value="ruby">Ruby</option>
-        <option value="javascript">JavaScript</option>
-        <option value="c++">C++</option>
-        <option value="c">C</option>
-        <option value="c#">C#</option>
-        <option value="python">Python</option>
-      </select>
-    </div>
-  
-    <!-- Course Catalog List -->
-    <div class="course-catalogs">
-      <div class="course-card" *ngFor="let course of courses">
+  </div>
+
+  <div class="course-catalogs">
+    <div *ngIf="filteredCourses.length > 0">
+      <div *ngFor="let course of filteredCourses" class="course-card">
         <div class="course-header">
-          <h3>{{ course.courseName }}</h3>
-          <p class="category-label">{{ course.category | uppercase }}</p>
+          <h3>{{ course.courseName | uppercase }}</h3>
+          <span class="category-label">{{ course.category }}</span>
         </div>
         <p class="course-description">{{ course.description }}</p>
         <ul class="course-features">
-          <li *ngFor="let feature of course.features">{{ feature }}</li>
+          <li *ngFor="let feature of course.features.split(',')">{{ feature }}</li>
         </ul>
-        <!-- <button (click)="enroll(course.id)" class="enroll-button">Enroll Now</button> -->
-        <div class="tooltip-container">
-            <button 
-              (click)="enroll(course.id)" 
-              class="enroll-button" 
-              [disabled]="!isLoggedIn">
-              Enroll Now
-            </button>
-            <span class="tooltip-text" *ngIf="!isLoggedIn">Please login to enroll</span>
-          </div>
-
-    </div>
-    </div>
-    <!-- <div *ngFor="let course of courses">
-      <div class="course-card">
-        <h3>{{ course.courseName }}</h3>
-  
-        <p>{{course.description}}</p>
-  
+        <button class="enroll-button" [disabled]="!isLoggedIn" (click)="enroll(course.id)">Enroll</button>
       </div>
-    </div> -->
+    </div>
+
+    <div *ngIf="filteredCourses.length === 0">
+      <p>No courses found</p>
+    </div>
   </div>
-
-
- 
-  
+</div>

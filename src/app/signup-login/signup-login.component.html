@@ -27,7 +27,7 @@
         [ngClass]="{'is-invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}" 
         required />
       <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error-message">
-        Password is required.
+        Valid Password, Please!
       </div>
 
       <button type="submit" class="submit-button" [disabled]="loginForm.invalid">Login</button>
@@ -47,7 +47,7 @@
         required />
       <div *ngIf="signupForm.controls['username'].invalid && signupForm.controls['username'].touched" class="error-message">
         Username is required.
-      </div>
+      </div> 
 
       <input 
         class="form-input" 
@@ -68,10 +68,37 @@
         [ngClass]="{'is-invalid': signupForm.controls['password'].invalid && signupForm.controls['password'].touched}" 
         required />
       <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched" class="error-message">
-        Password is required.
+        Password is required but atleast 3 characters!
       </div>
 
       <button type="submit" class="submit-button" [disabled]="signupForm.invalid">Signup</button>
     </form>
   </div>
 </div>
+
+
+
+<!-- <div class="signup-login-container">
+  <div class="tabs">
+    <button (click)="toggleTab(true)" [class.active]="isLogin">Login</button>
+    <button (click)="toggleTab(false)" [class.active]="!isLogin">Signup</button>
+  </div>
+
+  <!-- Login Form -->
+  <!-- <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="login()">
+    <h3>Login</h3>
+    <input formControlName="username" placeholder="Username" />
+    <input type="password" formControlName="password" placeholder="Password" />
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Signup Form -->
+  <!-- <form *ngIf="!isLogin" [formGroup]="signupForm" (ngSubmit)="signup()">
+    <h3>Signup</h3>
+    <input formControlName="username" placeholder="Username" />
+    <input formControlName="email" type="email" placeholder="Email" />
+    <input type="password" formControlName="password" placeholder="Password" />
+    <button type="submit">Signup</button>
+  </form>
+</div>  -->
+

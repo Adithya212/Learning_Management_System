@@ -6,23 +6,37 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [DatePipe,NgIf,RouterOutlet,RouterLink],
+  imports: [DatePipe, NgIf, RouterOutlet, RouterLink, FormsModule, NgClass],
   templateUrl: './courses.component.html',
-  styleUrl: './courses.component.css'
+  styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent {
-  isMenuOpen = false;
+  isCollapsed = false;
+  isMobile = false;
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  
+  currentDate: Date = new Date();
+
+  constructor(private router: Router) {
+    this.checkMobileView();
+    window.addEventListener('resize', this.checkMobileView.bind(this));
   }
-  currentDate: Date=new Date();
 
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
-  constructor(private router: Router) {}
+  closeSidebar() {
+    if (this.isMobile) {
+      this.isCollapsed = false;
+    }
+  }
+
+  checkMobileView() {
+    this.isMobile = window.innerWidth <= 768;
+  }
 
   navigateTo(section: string) {
     this.router.navigate([`/admin/${section}`]);
+    this.closeSidebar(); // Close the sidebar after navigation
   }
 }

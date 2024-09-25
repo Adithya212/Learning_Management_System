@@ -1,12 +1,14 @@
-
 <div class="admin-container">
+  <!-- Toggle Button (☰) only for mobile, placed below navbar -->
+  <button class="toggle-button" (click)="toggleSidebar()" *ngIf="isMobile">☰</button>
+
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <aside class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'show': isCollapsed && isMobile }">
     <ul>
-      <li><a (click)="navigateTo('user-management')" routerLink="user-management" >User Management</a></li>
-      <li><a (click)="navigateTo('course-management')">Course Management</a></li>
-      <li><a (click)="navigateTo('progress-management')">Progress Tracking</a></li>
-      <li><a (click)="navigateTo('feedback-management')">Feedback Management</a></li>
+      <li><a (click)="navigateTo('user-management')" routerLink="user-management">User Management</a></li>
+      <li><a (click)="navigateTo('course-management')" routerLink="course-management">Course Management</a></li>
+      <li><a (click)="navigateTo('progress-management')" routerLink="progress-management">Progress Tracking</a></li>
+      <li><a (click)="navigateTo('feedback-management')" routerLink="feedback-management">Feedback Management</a></li>
     </ul>
   </aside>
 

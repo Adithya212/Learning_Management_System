@@ -1,150 +1,148 @@
 .mycourses-container {
-    padding: 20px;
-    background-color: #8eceec;
-    font-family: 'Arial', sans-serif;
-    max-width: 1200px; /* To keep the content centered */
-    margin: 0 auto; /* Center the container horizontally */
-  }
- 
-  .search-bar {
-    margin-bottom: 20px;
-    margin-left: 400px;
-  }
- 
-  .search-input {
-    width: 50%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid rgb(10, 29, 53);
-    border-radius: 25px;
-  }
- 
-  .filters {
-    margin-bottom: 20px;
-    margin-left: 470px;
-  }
- 
-  .filters select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
- 
-  .course-catalogs {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ensures 4 cards per row when possible */
-    gap: 20px; /* Space between the cards */
-    justify-items: center; /* Center the cards within the grid */
-  }
- 
-  .course-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 280px; /* Set a fixed width for each card */
-    padding: 20px;
-    text-align: center;
-  }
- 
-  .course-header {
-    margin-bottom: 10px;
-  }
- 
-  .course-header h3 {
-    font-size: 20px;
-    color: #333;
-  }
- 
-  .category-label {
-    font-size: 14px;
-    color: #888;
-    margin-top: 5px;
-  }
- 
-  .course-description {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 15px;
-  }
- 
-  .course-features {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 0 15px;
-  }
- 
-  .course-features li {
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 5px;
-  }
- 
-  .enroll-button {
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
- 
-  .enroll-button:hover {
-    background-color: #0056b3;
-  }
+  padding: 20px;
+  background-color: #8eceec;
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px; /* To keep the content centered */
+  margin: 0 auto; /* Center the container horizontally */
+}
 
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center; /* Center align the search bar */
+}
 
-  .tooltip-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .tooltip-text {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Position above the button */
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .tooltip-container:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .enroll-button[disabled] {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+.search-input {
+  width: 50%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid rgb(10, 29, 53);
+  border-radius: 25px;
+}
 
-  .signup-login-button {
-    padding: 12px 20px;
-    background-color: #ff0000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    border: 1px solid;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-left: 200px;
-    box-shadow: 4px 4px 5px;
-  }
-  
-  .signup-login-button:hover {
-    background-color: #0056b3;
-  }
+.filters {
+  margin-bottom: 20px;
+  text-align: center; /* Center align the filters */
+}
+
+.filters select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.course-catalogs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Display 3 cards per row */
+  gap: 20px; /* Space between the cards */
+  justify-items: center; /* Center the cards within the grid */
+}
+
+.course-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 280px; /* Set a fixed width for each card */
+  padding: 20px;
+  text-align: center;
+}
+
+.course-header {
+  margin-bottom: 10px;
+}
+
+.course-header h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.category-label {
+  font-size: 14px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.course-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.course-features {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+.course-features li {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.enroll-button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.enroll-button:hover {
+  background-color: #0056b3;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.enroll-button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.signup-login-button {
+  padding: 12px 20px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-left: 200px;
+  box-shadow: 4px 4px 5px;
+}
+
+.signup-login-button:hover {
+  background-color: #c70000; /* Darker red on hover */
+}
