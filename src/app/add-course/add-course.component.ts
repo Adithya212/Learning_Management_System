@@ -19,7 +19,7 @@ export class AddCourseComponent {
     console.log(this.course);
     this.courseService.addCourse(this.course).subscribe(() => {
       
-      this.router.navigate(['/admin']);
+      // this.router.navigate(['/admin']);
       
     });
     alert(`Course added successfully`)

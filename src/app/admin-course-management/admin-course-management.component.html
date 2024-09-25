@@ -11,4 +11,15 @@
 
     </div>
   </div>
+
+  <!-- <div *ngIf="enrolled.length > 0"> -->
+    <h2>Enrollments</h2>
+    <div *ngFor="let enrolls of enrolled">
+      <div class="course-card">
+        <h3>{{ enrolls.user.email}}</h3>
+  
+        <p>{{enrolls.status}}</p>
+  
+      </div>
+    <!-- </div> -->
  </div>

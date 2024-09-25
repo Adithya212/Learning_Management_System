@@ -17,4 +17,11 @@ export class CourseService {
   addCourse(course: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, course);
   }
+  // enrollUser(userId: number, courseId: number): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/enrollments/enroll?userId=${userId}&courseId=${courseId}`, {});
+  // }
+
+  // getCourseEnrollments(courseId: number): Observable<any> {
+  //   return this.http.get<>(`${this.apiUrl}/enrollments/course/${courseId}`);
+  // }
 }

@@ -3,6 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CourseService } from '../course.service';
+import { EnrollmentService } from '../enrollment.service';
 export interface Course {
   id: number;
   courseName: string;
@@ -11,6 +12,20 @@ export interface Course {
   features: string[];
   description: string;
 }
+export interface Enrollment {
+  user: {
+    email: string;
+  };
+  course: {
+    id: number;
+    // name: string;  // Add name if you are including it from the backend
+  };
+  status: string;
+  progress: number;
+  startDate: string;
+  completionDate: string;
+}
+
 @Component({
   selector: 'app-mycourses',
   standalone: true,
@@ -20,8 +35,25 @@ export interface Course {
 })
 export class MycoursesComponent{
   courses: Course[]= [];
+  filteredCourses: Course[] = [];
+  // enrollments = {user:'',course:'',status:'',progress:'',startDate:'',completionDate:''}
+  enrollments: Enrollment[]= [];
+//   {
+//     "user": {
+//         "email":"adithyas@gmail.com"
+//     },
+//     "course": {
+//         "id": 1
+//     },
+//     "status": "Enrolled",
+//     "progress": 0.0,
+//     "startDate": "2024-09-21T00:00:00",
+//     "completionDate": "2024-09-21T00:00:00"
+// }
 
-  constructor(private router: Router, private courseService: CourseService) {}
+  isLoggedIn: boolean = false;
+
+  constructor(private router: Router, private courseService: CourseService,private enrollmentService: EnrollmentService ) {}
   searchTerm: string = '';
   selectedCategory: string = 'all';
   // console.log(helloi)
@@ -33,82 +65,68 @@ export class MycoursesComponent{
   //     category: 'java',
   //     description: 'Learn the basics of Java programming.',
   //     features:'Basic Syntax'
-  //   }]
+  //   },
   //   {
   //     id: 2,
-  //     title: 'Advanced Java',
+  //     courseName: 'Advanced Java',
   //     category: 'java',
   //     description: 'Master Java with advanced topics.',
-  //     features: ['Multithreading', 'Streams API', 'Design Patterns']
+  //     features: 'Multithreading'
   //   },
   //   {
   //     id: 3,
-  //     title: 'Vue.js for Beginners',
+  //     courseName: 'Vue.js for Beginners',
   //     category: 'vue',
   //     description: 'Start building modern web apps with Vue.js.',
-  //     features: ['Vue Directives', 'Component Lifecycle', 'Vue Router']
+  //     features: 'Vue Directives'
   //   },
   //   {
   //     id: 4,
-  //     title: 'Ruby on Rails',
+  //     courseName: 'Ruby on Rails',
   //     category: 'ruby',
   //     description: 'Web development with Ruby on Rails.',
-  //     features: ['MVC Architecture', 'Active Record', 'REST APIs']
-  //   },
-  //   {
-  //     id: 5,
-  //     title: 'JavaScript Essentials',
-  //     category: 'javascript',
-  //     description: 'Become proficient in JavaScript.',
-  //     features: ['DOM Manipulation', 'ES6 Features', 'Asynchronous JS']
-  //   },
-  //   {
-  //     id: 6,
-  //     title: 'C++ Programming',
-  //     category: 'c++',
-  //     description: 'Dive deep into C++ programming.',
-  //     features: ['Memory Management', 'STL', 'Object-Oriented Programming']
-  //   },
-  //   {
-  //     id: 7,
-  //     title: 'C Programming Basics',
-  //     category: 'c',
-  //     description: 'Get started with C programming.',
-  //     features: ['Pointers', 'Memory Allocation', 'Data Types']
-  //   },
-  //   {
-  //     id: 8,
-  //     title: 'C# for Developers',
-  //     category: 'c#',
-  //     description: 'Develop modern apps with C#.',
-  //     features: ['LINQ', 'Entity Framework', 'Asynchronous Programming']
-  //   },
-  //   {
-  //     id: 9,
-  //     title: 'Python for Data Science',
-  //     category: 'python',
-  //     description: 'Python for data analysis and machine learning.',
-  //     features: ['Pandas', 'NumPy', 'Scikit-learn']
-  //   }
-  // ];
+  //     features: 'MVC Architecture'
+  //   }];
+ 
 
-  filteredCourses = this.courses;
+  // filteredCourses = this.courses;
 
 
   ngOnInit(): void {
-    console.log(this.courses);
+    
     this.loadCourses();
-    console.log(this.courses);
-    this.filteredCourses = this.courses;
-    console.log(this.filteredCourses);
-    debugger;
-    // console.log(this.filteredCourses);
-    // this.loadCourses();
-  }
+    this.loadEnrollments(); // Load enrollments on component initialization
+    }
 
   loadCourses() {
     this.courseService.getCourses().subscribe((data: any) => {
       this.courses = data;
+      this.filteredCourses = this.courses; 
+    });
+  }
+  loadEnrollments() {
+    this.enrollmentService.getEnrollments().subscribe((data:Enrollment[]) => {
+      this.enrollments = data;
+    });
+  }
+
+  // On Enroll button click
+  enroll(courseId: number) {
+    const email = "adithyas@gmail.com"; // For demonstration purposes, we assume userId = 1 (logged-in user)
+
+    const enrollmentData = {
+      email: email,        // Assuming userId is available
+      courseId: courseId     // Course being enrolled
+    };
+
+    this.enrollmentService.addEnrollments(enrollmentData).subscribe({
+      next: () => {
+        alert('User enrolled successfully!');
+        this.loadEnrollments(); // Refresh enrollments after enrolling
+      },
+      error: (error) => {
+        alert('Enrollment failed! Error: ' + error.message);
+      }
     });
   }
 
@@ -128,27 +146,9 @@ export class MycoursesComponent{
     );
   }
 
-  // Function to handle enroll action
-  enroll(courseId: number): void {
-    if (this.isLoggedIn) {
-      alert(`You have enrolled in course ID: ${courseId}`);
-    } else {
-      alert('Please login to enroll');
-    }
-  }
-
- 
-
-  constructor(private router: Router) {}
-
   goToSignupLogin(): void {
-    
-    this.router.navigate(['/forms']); // Navigates to the signup/login component
-   
+    this.router.navigate(['/forms']);
+    this.isLoggedIn = true; // Manually set isLoggedIn to true after signup/login
   }
-
-  // goToSignupLogin(): void {
-  //   alert(`opened`); // Navigates to the signup/login component
-  // }
 
 }
