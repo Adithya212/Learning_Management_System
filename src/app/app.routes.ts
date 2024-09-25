@@ -12,6 +12,9 @@ import { SignupLoginComponent } from './signup-login/signup-login.component';
 
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { EnrollPageComponent } from './enroll-page/enroll-page.component';
+
+
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch: 'full'},
@@ -38,6 +41,9 @@ export const routes: Routes = [
         { path: 'feedback-management', component: FeedbackComponent },
     ]},
 
+    // {path:'mycourses', component:MycoursesComponent},
     {path:'forms',component:SignupLoginComponent},
     {path:'', redirectTo:'mycourses', pathMatch: 'full'},
+
+    // { path: 'enroll', component: EnrollPageComponent },
 ];

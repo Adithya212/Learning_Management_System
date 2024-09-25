@@ -7,21 +7,98 @@
   <!-- Login Form -->
   <div *ngIf="isLogin" class="login-form">
     <h3 class="form-title">Login</h3>
-    <form (ngSubmit)="login()" class="form-body">
-      <input class="form-input" type="text" placeholder="Username" [(ngModel)]="loginData.username" name="username" required />
-      <input class="form-input" type="password" placeholder="Password" [(ngModel)]="loginData.password" name="password" required />
-      <button type="submit" class="submit-button">Login</button>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-body">
+      <input 
+        class="form-input" 
+        type="text" 
+        formControlName="username" 
+        placeholder="Username" 
+        [ngClass]="{'is-invalid': loginForm.controls['username'].invalid && loginForm.controls['username'].touched}" 
+        required />
+      <div *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched" class="error-message">
+        Username is required.
+      </div>
+
+      <input 
+        class="form-input" 
+        type="password" 
+        formControlName="password" 
+        placeholder="Password" 
+        [ngClass]="{'is-invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}" 
+        required />
+      <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error-message">
+        Valid Password, Please!
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="loginForm.invalid">Login</button>
     </form>
   </div>
 
   <!-- Signup Form -->
   <div *ngIf="!isLogin" class="signup-form">
     <h3 class="form-title">Signup</h3>
-    <form (ngSubmit)="signup()" class="form-body">
-      <input class="form-input" type="text" placeholder="Username" [(ngModel)]="signupData.username" name="signupUsername" required />
-      <input class="form-input" type="email" placeholder="Email" [(ngModel)]="signupData.email" name="email" required />
-      <input class="form-input" type="password" placeholder="Password" [(ngModel)]="signupData.password" name="signupPassword" required />
-      <button type="submit" class="submit-button">Signup</button>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()" class="form-body">
+      <input 
+        class="form-input" 
+        type="text" 
+        formControlName="username" 
+        placeholder="Username" 
+        [ngClass]="{'is-invalid': signupForm.controls['username'].invalid && signupForm.controls['username'].touched}" 
+        required />
+      <div *ngIf="signupForm.controls['username'].invalid && signupForm.controls['username'].touched" class="error-message">
+        Username is required.
+      </div> 
+
+      <input 
+        class="form-input" 
+        type="email" 
+        formControlName="email" 
+        placeholder="Email" 
+        [ngClass]="{'is-invalid': signupForm.controls['email'].invalid && signupForm.controls['email'].touched}" 
+        required />
+      <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched" class="error-message">
+        Valid email is required.
+      </div>
+
+      <input 
+        class="form-input" 
+        type="password" 
+        formControlName="password" 
+        placeholder="Password" 
+        [ngClass]="{'is-invalid': signupForm.controls['password'].invalid && signupForm.controls['password'].touched}" 
+        required />
+      <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched" class="error-message">
+        Password is required but atleast 3 characters!
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="signupForm.invalid">Signup</button>
     </form>
   </div>
 </div>
+
+
+
+<!-- <div class="signup-login-container">
+  <div class="tabs">
+    <button (click)="toggleTab(true)" [class.active]="isLogin">Login</button>
+    <button (click)="toggleTab(false)" [class.active]="!isLogin">Signup</button>
+  </div>
+
+  <!-- Login Form -->
+  <!-- <form *ngIf="isLogin" [formGroup]="loginForm" (ngSubmit)="login()">
+    <h3>Login</h3>
+    <input formControlName="username" placeholder="Username" />
+    <input type="password" formControlName="password" placeholder="Password" />
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Signup Form -->
+  <!-- <form *ngIf="!isLogin" [formGroup]="signupForm" (ngSubmit)="signup()">
+    <h3>Signup</h3>
+    <input formControlName="username" placeholder="Username" />
+    <input formControlName="email" type="email" placeholder="Email" />
+    <input type="password" formControlName="password" placeholder="Password" />
+    <button type="submit">Signup</button>
+  </form>
+</div>  -->
+

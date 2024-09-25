@@ -1,15 +1,26 @@
+/* Admin container that holds sidebar and main content */
 .admin-container {
   display: flex;
   height: 100vh;
+  overflow: hidden; /* Prevent scrolling unless needed */
 }
 
+/* Sidebar styles */
 .sidebar {
   width: 250px;
   background-color: #2f3640;
   padding: 20px;
   color: white;
-  position: sticky;
-  height: 90.9vh;
+  position: fixed;
+  top: 60px; /* Ensure it's below the navbar */
+  left: 0;
+  height: calc(100vh - 60px); /* Full height minus navbar */
+  transition: left 0.3s, background-color 0.3s;
+  z-index: 999;
+}
+
+.sidebar.collapsed {
+  width: 60px; /* Narrow width when collapsed */
 }
 
 .sidebar ul {
@@ -27,8 +38,68 @@
   background-color: #3d3d3d;
 }
 
+/* Main content area */
 .main-content {
   flex-grow: 1;
   padding: 20px;
   background-color: #f4f4f4;
+  margin-left: 250px; /* Leave space for sidebar */
+  margin-top: 60px; /* Space for navbar */
+  overflow-y: auto;
+}
+
+/* Toggle Button for mobile */
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: fixed;
+  top: 60px; /* Below the navbar */
+  left: 10px;
+  z-index: 1001;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100vw; /* Full width on mobile */
+    height: calc(100vh - 60px); /* Full height minus navbar */
+    left: -100vw; /* Hidden initially */
+    transition: left 0.3s;
+  }
+
+  .sidebar.show {
+    left: 0; /* Show the sidebar when toggled */
+  }
+
+  .main-content {
+    margin-left: 0; /* No left margin for main content in mobile */
+    margin-top: 60px; /* Push below the navbar */
+  }
+
+  .toggle-button {
+    display: block; /* Show toggle button on mobile */
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px; /* Ensure it's below the navbar */
+    height: calc(100vh - 60px); /* Full height minus navbar */
+  }
+
+  .main-content {
+    margin-left: 250px; /* Space for sidebar in desktop */
+    margin-top: 60px; /* Ensure the content is below the navbar */
+  }
+
+  .toggle-button {
+    display: none; /* Hide toggle button on desktop */
+  }
 }

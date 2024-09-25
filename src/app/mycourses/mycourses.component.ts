@@ -1,5 +1,5 @@
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CourseService } from '../course.service';
@@ -8,8 +8,8 @@ export interface Course {
   id: number;
   courseName: string;
   category: string;
-  enrolledDate: string;
-  features: string[];
+  // enrolledDate: string;
+  features: string;
   description: string;
 }
 export interface Enrollment {
@@ -29,11 +29,13 @@ export interface Enrollment {
 @Component({
   selector: 'app-mycourses',
   standalone: true,
-  imports: [RouterLink,NgFor,NgIf,FormsModule,UpperCasePipe],
+  imports: [RouterLink, NgFor, NgIf, FormsModule, UpperCasePipe],
   templateUrl: './mycourses.component.html',
-  styleUrl: './mycourses.component.css'
+  styleUrls: ['./mycourses.component.css'],
+  encapsulation: ViewEncapsulation.None, 
 })
-export class MycoursesComponent{
+export class MycoursesComponent implements OnInit {
+
   courses: Course[]= [];
   filteredCourses: Course[] = [];
   // enrollments = {user:'',course:'',status:'',progress:'',startDate:'',completionDate:''}
@@ -91,16 +93,20 @@ export class MycoursesComponent{
 
   // filteredCourses = this.courses;
 
+  // constructor(private router: Router, private courseService: CourseService) {}
 
   ngOnInit(): void {
     
     this.loadCourses();
     this.loadEnrollments(); // Load enrollments on component initialization
     }
+  // }
 
-  loadCourses() {
+  loadCourses(): void {
     this.courseService.getCourses().subscribe((data: any) => {
       this.courses = data;
+      this.filteredCourses = this.courses; // Update filteredCourses after loading
+      this.onSearch(); // Trigger filtering
       this.filteredCourses = this.courses; 
     });
   }
@@ -130,25 +136,39 @@ export class MycoursesComponent{
     });
   }
 
-  // Function to filter courses based on the search term
+  // Function to filter courses based on the search term and category
   onSearch(): void {
     this.filteredCourses = this.courses.filter(course => 
       course.courseName.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-      (this.selectedCategory === 'all' || course. category === this.selectedCategory)
+      (this.selectedCategory === 'all' || course.category === this.selectedCategory)
     );
   }
 
   // Function to handle category change
   onCategoryChange(event: any): void {
-    this.filteredCourses = this.courses.filter(course => 
-      (this.selectedCategory === 'all' || course.category === this.selectedCategory) &&
-      course.courseName.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    this.onSearch(); // Re-filter the courses whenever the category changes
   }
+
+  // Function to handle enroll action
+  // enroll(courseId: number): void {
+  //   if (this.isLoggedIn) {
+  //     alert(`You have enrolled in course ID: ${courseId}`);
+  //   } else {
+  //     alert('Please login to enroll');
+  //   }
+  // }
+
+ 
+
+  // constructor(private router: Router) {}
 
   goToSignupLogin(): void {
     this.router.navigate(['/forms']);
     this.isLoggedIn = true; // Manually set isLoggedIn to true after signup/login
   }
+
+  // goToSignupLogin(): void {
+  //   alert(`opened`); // Navigates to the signup/login component
+  // }
 
 }
