@@ -8,11 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AdminCourseManagementComponent } from './admin-course-management/admin-course-management.component';
+import { EnrollPageComponent } from './enroll-page/enroll-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HomeComponent, RouterLink,UserRegisterComponent,AddCourseComponent,AdminCourseManagementComponent],
+  imports: [RouterOutlet,HomeComponent, RouterLink,UserRegisterComponent,AddCourseComponent,AdminCourseManagementComponent,EnrollPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

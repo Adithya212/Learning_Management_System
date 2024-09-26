@@ -1,49 +1,62 @@
 import { NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { SafeUrlPipe } from '../safe-url.pipe';
+import { CourseService } from '../services/course-service/course.service';
+import { EnrollmentService } from '../services/enrollment-service/enrollment.service';
+import { FormsModule } from '@angular/forms';
 declare var YT: any;
-
+export interface Course {
+  id: number;
+  courseName: string;
+  category: string;
+  enrolledDate: string;
+  features: string;
+  description: string;
+  videoUrl: string; // Video URL
+}
+export interface Enrollment {
+  user: {
+    email: string;
+  };
+  course: {
+    id: number;
+  };
+  status: string;
+  progress: number;
+  startDate: string;
+  completionDate: string;
+}
 @Component({
   selector: 'app-enroll-page',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,NgClass,SafeUrlPipe],
+  imports: [RouterLink,RouterOutlet,NgClass,FormsModule],
   templateUrl: './enroll-page.component.html',
   styleUrl: './enroll-page.component.css'
 })
-export class EnrollPageComponent implements OnInit {
-  videoUrl!: string; // To store the video URL
-  isVideoCompleted: boolean = false; // To track if the video is completed
-  assessmentLink: string = '/assessment'; // Link to the assessment page
+export class EnrollPageComponent{
 
-  player: any;
+  courses :Course[]=[];
+  enroll:Enrollment[]=[];
+  currentVideoUrl = '';
+  currentCourseId=0;
+  progressPercentage = 0;
+  constructor(private enrollService: EnrollmentService) { }
 
   ngOnInit(): void {
-    // Set your video URL
-    this.videoUrl = 'https://youtu.be/xs7tN0A7RC8?si=5FXbXI6WtXce-1UO'; // Replace with your video URL
-    this.loadYouTubePlayer();
+    this.loadEnrolledCourses();
   }
 
-  loadYouTubePlayer() {
-    if ((window as any).YT && (window as any).YT.Player) {
-      this.createPlayer();
-    } else {
-      (window as any).onYouTubeIframeAPIReady = () => this.createPlayer();
-    }
-  }
-
-  createPlayer() {
-    const iframe = document.getElementById('player-iframe');
-    this.player = new YT.Player(iframe, {
-      events: {
-        'onStateChange': (event: any) => this.onPlayerStateChange(event)
-      }
+  loadEnrolledCourses() {
+    // Fetch enrolled courses (use actual userId)
+    this.enrollService.getEnrollments().subscribe(data => {
+      this.enroll = data;
     });
   }
 
-  onPlayerStateChange(event: any) {
-    if (event.data === YT.PlayerState.ENDED) {
-      this.isVideoCompleted = true; // Mark the video as completed
-    }
+  playVideo(courseId: number, videoUrl: string) {
+    this.currentCourseId = courseId;
+    this.currentVideoUrl = videoUrl;
+    this.progressPercentage = 0; // reset progress for a new video
   }
+
 }

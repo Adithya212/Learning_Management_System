@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
-import { CourseService } from '../course.service';
-import { EnrollmentService } from '../enrollment.service';
+import { CourseService } from '../services/course-service/course.service';
+import { EnrollmentService } from '../services/enrollment-service/enrollment.service';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 export interface Course {
   id: number;
   courseName: string;
-  catergory: string;
+  category: string;
   enrolledDate: string;
   features: string[];
   description: string;

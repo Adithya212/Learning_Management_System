@@ -30,6 +30,7 @@ export const routes: Routes = [
     {path:'mycourses', component:MycoursesComponent},
     {path:'mycourses/:id', component:MycoursesComponent},
     { path: 'add-course', component: AddCourseComponent },
+    { path: 'enrolled', component: EnrollPageComponent },
 
     { path: 'admin', component: CoursesComponent, children: [
         { path: 'user-management', component: AdminUserManagementComponent },
@@ -45,5 +46,5 @@ export const routes: Routes = [
     {path:'forms',component:SignupLoginComponent},
     {path:'', redirectTo:'mycourses', pathMatch: 'full'},
 
-    // { path: 'enroll', component: EnrollPageComponent },
+   
 ];

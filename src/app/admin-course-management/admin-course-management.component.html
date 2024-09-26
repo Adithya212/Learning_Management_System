@@ -1,4 +1,4 @@
-<h1>Admin Dashboard</h1>
+<!-- <h1>Admin Dashboard</h1>
 <button (click)="onAddCourseClick()">Add Course</button>
 
 <div *ngIf="courses.length > 0">
@@ -12,8 +12,8 @@
     </div>
   </div>
 
-  <!-- <div *ngIf="enrolled.length > 0"> -->
-    <h2>Enrollments</h2>
+  <div *ngIf="enrolled.length > 0"> -->
+    <!-- <h2>Enrollments</h2>
     <div *ngFor="let enrolls of enrolled">
       <div class="course-card">
         <h3>{{ enrolls.user.email}}</h3>
@@ -21,5 +21,55 @@
         <p>{{enrolls.status}}</p>
   
       </div>
-    <!-- </div> -->
- </div>
+     </div> -->
+ <!-- </div>  -->
+
+
+ <h1>Admin Dashboard</h1>
+<button (click)="onAddCourseClick()">Add Course</button>
+
+<div *ngIf="courses.length > 0">
+  <h2>Courses</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Category</th>
+        <th>Enrolled Date</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.category }}</td>
+        <td>{{ course.enrolledDate }}</td>
+        <td>{{ course.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="enrolled.length > 0">
+  <h2>Enrollments</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>User Email</th>
+        <th>Status</th>
+        <th>Progress</th>
+        <th>Start Date</th>
+        <th>Completion Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let enrolls of enrolled">
+        <td>{{ enrolls.user.email }}</td>
+        <td>{{ enrolls.status }}</td>
+        <td>{{ enrolls.progress }}%</td>
+        <td>{{ enrolls.startDate }}</td>
+        <td>{{ enrolls.completionDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

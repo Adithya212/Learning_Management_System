@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, NgModule} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AccountService } from '../services/auth-service/account.service';
 
 @Component({
   selector: 'app-signup-login',
@@ -94,7 +94,8 @@ export class SignupLoginComponent {
           this.router.navigate(['/mycourses']);  // Navigate to protected route
         },
         error: (err) => {
-          alert('Signup failed: ' + err.error.message);
+          console.log(signupData);
+          alert('Sign Up failed: ' + err.error.message);
         }
       });
     }
