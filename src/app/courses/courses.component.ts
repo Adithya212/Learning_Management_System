@@ -2,11 +2,12 @@ import { DatePipe, NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AdminCourseManagementComponent } from "../admin-course-management/admin-course-management.component";
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [DatePipe, NgIf, RouterOutlet, RouterLink, FormsModule, NgClass],
+  imports: [DatePipe, NgIf, RouterOutlet, RouterLink, FormsModule, NgClass, AdminCourseManagementComponent],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })

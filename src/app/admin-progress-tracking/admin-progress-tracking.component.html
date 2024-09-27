@@ -1,1 +1,28 @@
-<p>admin-progress-tracking works!</p>
+<div *ngIf="progressList.length > 0">
+    <h2>User Course Progress Tracking</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>User Email</th>
+          <th>Progress (%)</th>
+          <th>Update Progress</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let progress of progressList">
+          <td>{{ progress.enrollment.course.courseName }}</td>
+          <td>{{ progress.enrollment.user.email }}</td>
+          <td>{{ progress.progressPercentage }}%</td>
+          <td>
+            <button (click)="updateProgress(progress)" class="update-btn">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="progressList.length === 0">
+    <p>No progress data available.</p>
+  </div>
+  

@@ -5,20 +5,25 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CourseService {
-  private apiUrl = 'http://localhost:8080/api/courses';  // Spring Boot API
+export class ProgressService {
+  private apiUrl = 'http://localhost:8080/api/progress';  // Spring Boot API
+
   constructor(private http: HttpClient) {}
+
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');  // Fetch the token from localStorage
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
-  getCourses(): Observable<any> {
+
+  // Method to update progress
+  updateProgress(progress: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.get<any>(this.apiUrl, { headers });
+    return this.http.post<any>(this.apiUrl, progress, { headers });
   }
 
-  addCourse(course: any): Observable<any> {
+  // Method to get progress
+  getProgress(): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.post<any>(this.apiUrl, course, { headers });
+    return this.http.get<any>(this.apiUrl, { headers });
   }
 }

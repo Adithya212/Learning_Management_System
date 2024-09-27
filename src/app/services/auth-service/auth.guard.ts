@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateFn, Router } from '@angular/router';
 
-// export const authGuard: CanActivateFn = (route, state) => {
-//   return true;
-// };
+export const authGuard: CanActivateFn = (route, state) => {
+  return true;
+};
 
 @Injectable({
   providedIn: 'root'

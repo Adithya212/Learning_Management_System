@@ -2,7 +2,7 @@
   padding: 20px;
   background-color: #ffffff;
   font-family: 'Arial', sans-serif;
-  max-width: 1200px;
+  max-width: 2000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
 }
 
 .search-input {
-  width: 60%;
+  width: 100%;
   padding: 12px;
   font-size: 16px;
   border: 2px solid rgb(10, 29, 53);
@@ -62,13 +62,9 @@
 }
 .course-catalogs{
   display: grid;
-  /* flex-direction: row; */
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* grid-template-columns: repeat(3, 1fr); 3 cards per row */
-  /* gap: 20px; Space between the cards */
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
   justify-items: center; /* Center the cards within each grid cell */
-  /* max-width: 1200px; Optional: Limit the overall width of the catalog */
   margin: 0 auto; 
 }
 
@@ -158,7 +154,7 @@
   visibility: visible;
   opacity: 1;
 }
-
+/* 
 @media (max-width: 768px) {
   .search-input {
     width: 80%;
@@ -182,4 +178,4 @@
   .signup-login-button:hover {
     background-color: #c70000;
   }
-}
+} */

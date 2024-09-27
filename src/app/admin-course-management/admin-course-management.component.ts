@@ -4,27 +4,9 @@ import { CourseService } from '../services/course-service/course.service';
 import { EnrollmentService } from '../services/enrollment-service/enrollment.service';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-export interface Course {
-  id: number;
-  courseName: string;
-  category: string;
-  enrolledDate: string;
-  features: string[];
-  description: string;
-}
-export interface Enrollment {
-  user: {
-    email: string;
-  };
-  course: {
-    id: number;
-    courseName: string;
-  };
-  status: string;
-  progress: number;
-  startDate: string;
-  completionDate: string;
-}
+import { Course } from '../models/course.model';
+import { Enrollment } from '../models/enrollment.model';
+
 @Component({
   selector: 'app-admin-course-management',
   standalone: true,

@@ -4,27 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CourseService } from '../services/course-service/course.service';
 import { EnrollmentService } from '../services/enrollment-service/enrollment.service';
-export interface Course {
-  id: number;
-  courseName: string;
-  category: string;
-  // enrolledDate: string;
-  features: string;
-  description: string;
-}
-export interface Enrollment {
-  user: {
-    email: string;
-  };
-  course: {
-    id: number;
-    // name: string;  // Add name if you are including it from the backend
-  };
-  status: string;
-  progress: number;
-  startDate: string;
-  completionDate: string;
-}
+import { Course } from '../models/course.model';
+import { Enrollment } from '../models/enrollment.model';
+import { EmployeeService } from '../services/employee-service/employee.service';
+import { AccountService } from '../services/auth-service/account.service';
 
 @Component({
   selector: 'app-mycourses',
@@ -35,7 +18,7 @@ export interface Enrollment {
   encapsulation: ViewEncapsulation.None, 
 })
 export class MycoursesComponent implements OnInit {
-
+  
   courses: Course[]= [];
   filteredCourses: Course[] = [];
   enrollments: Enrollment[]= [];
@@ -43,7 +26,7 @@ export class MycoursesComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor(private router: Router, private courseService: CourseService,private enrollmentService: EnrollmentService ) {}
+  constructor(private router: Router, private courseService: CourseService,private enrollmentService: EnrollmentService ,private employee:AccountService) {}
   searchTerm: string = '';
   selectedCategory: string = 'all';
    ngOnInit(): void {
@@ -69,20 +52,18 @@ export class MycoursesComponent implements OnInit {
 
   // On Enroll button click
   enroll(courseId: number) {
-    const email = "adithyas@gmail.com"; // For demonstration purposes, we assume userId = 1 (logged-in user)
-
+    const id = 1;
     const enrollmentData = {
-      email: email,        // Assuming userId is available
+      id: id,        // Assuming userId is available
       courseId: courseId     // Course being enrolled
     };
 
     this.enrollmentService.addEnrollments(enrollmentData).subscribe({
       next: () => {
-        alert('User ennot rolled successfully!');
-        this.router.navigate(['enrolled']);
+        alert('User enrolled successfully!');
+        this.router.navigate(['/mycourses']);
         this.loadEnrollments();
         
-         // Refresh enrollments after enrolling
       },
       error: (error) => {
         alert('Enrollment failed! Error: ' + error.message);

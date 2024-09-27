@@ -21,9 +21,6 @@ export class AdminloginComponent {
     const hardcodedUsername = 'admin';
     const hardcodedPassword = 'password123';
 
-    console.log('Entered Username:', this.username); // Debugging
-    console.log('Entered Password:', this.password); // Debugging
-
     if (this.username === hardcodedUsername && this.password === hardcodedPassword) {
       console.log('Login successful!');  // Debugging
       localStorage.setItem('loggedIn', 'true');  // Set login status

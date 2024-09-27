@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YoutubeComponent } from './youtube.component';
+import { NavbarComponent } from './navbar.component';
 
-describe('YoutubeComponent', () => {
-  let component: YoutubeComponent;
-  let fixture: ComponentFixture<YoutubeComponent>;
+describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [YoutubeComponent]
+      imports: [NavbarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(YoutubeComponent);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

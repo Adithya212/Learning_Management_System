@@ -37,50 +37,43 @@ export class SignupLoginComponent {
     this.isLogin = isLoginTab;
   }
 
-  // // Login function
-  // login() {
-  //   if (this.loginForm.valid) {
-  //     console.log('Login form data:', this.loginForm.value);
-  //     alert('Logged in successfully!');
-  //     localStorage.setItem('isLoggedIn', 'true');
-  //     this.router.navigate(['/mycourses']);
-  //   } else {
-  //     alert('Please fill in all fields.');
-  //   }
-  // }
-
 
    // Login function
    login() {
+    // if (this.loginForm.valid) {
+    //   const loginData = this.loginForm.value;
+    //   console.log(loginData);
+    //   // Call login API via AccountService
+    //   this.accountService.login(loginData).subscribe({
+    //     next: (response) => {
+    //       alert('Logged in successfully!');
+    //       localStorage.setItem('token', response.token);  // Store JWT token
+    //       this.router.navigate(['/mycourses']);  // Navigate to protected route
+    //     },
+    //     error: () => {
+    //       alert('Login failed. Check credentials.');
+    //     }
+    //   });
+    // }
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-
-      // Call login API via AccountService
+      console.log('Sending login data:', loginData);
+      
       this.accountService.login(loginData).subscribe({
         next: (response) => {
+          console.log('Login response:', response);
           alert('Logged in successfully!');
-          localStorage.setItem('token', response.token);  // Store JWT token
-          this.router.navigate(['/mycourses']);  // Navigate to protected route
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/mycourses']);
         },
-        error: () => {
-          alert('Login failed. Check credentials.');
+        error: (error) => {
+          console.error('Login error:', error);
+          alert('Login failed. Error: ' + (error.error?.message || error.statusText));
         }
       });
     }
   }
-  // // Signup function
-  // signup() {
-  //   if (this.signupForm.valid) {
-  //     console.log('Signup form data:', this.signupForm.value);
-  //     alert('Signup successful!');
-  //     localStorage.setItem('isLoggedIn', 'true');
-  //     this.router.navigate(['/mycourses']);
-  //   } else {
-  //     alert('Please fill in all fields.');
-  //   }
-  // }
-
-
+  
    // Signup function
    signup() {
     if (this.signupForm.valid) {

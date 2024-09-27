@@ -40,7 +40,7 @@
         </div>
         <p class="course-description">{{ course.description }}</p>
         <ul class="course-features">
-          <li *ngFor="let feature of course.features.split(',')">{{ feature }}</li>
+          <li>{{ course.features }}</li>
         </ul>
         <div class="tooltip-container">
           <button (click)="enroll(course.id)" class="enroll-button">Enroll</button>
@@ -49,8 +49,8 @@
     </div>
 </div>
     <!-- If no courses are found -->
-    <!-- <div *ngIf="filteredCourses.length === 0">
+    <div *ngIf="filteredCourses.length === 0">
       <p>No courses found</p>
     </div>
-  </div> -->
-</div>
+  </div>
+

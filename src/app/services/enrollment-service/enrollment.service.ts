@@ -9,16 +9,17 @@ export class EnrollmentService {
   private apiUrl = 'http://localhost:8080/api/enrollments';  // Spring Boot API
   
   constructor(private http: HttpClient) {}
-
-  getEnrollments(): Observable<any> {
+  private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');  // Fetch the token from localStorage
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+  getEnrollments(): Observable<any> {
+    const headers = this.getHeaders();
     return this.http.get<any>(this.apiUrl,{headers});
   }
 
   addEnrollments(enrollments: any): Observable<any> {
-    const token = localStorage.getItem('token');  // Fetch the token from localStorage
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const headers = this.getHeaders();
     return this.http.post<any>(this.apiUrl, enrollments,{headers});
   }
 }

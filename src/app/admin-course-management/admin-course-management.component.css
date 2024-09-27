@@ -12,7 +12,15 @@ body {
     text-align: center;
     margin-top: 20px;
     font-size: 32px;
-    color: #2c3e50;
+    color: #000000;
+    font-weight: bold;
+  }
+  h2{
+   
+    font-size: 22px;
+    color: #000000;
+    margin-bottom: 30px;
+    font-weight: bold;
   }
   
   button {
