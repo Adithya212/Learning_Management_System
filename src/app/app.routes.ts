@@ -18,6 +18,41 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
 
 
 export const routes: Routes = [
+    // {path:'', redirectTo:'home', pathMatch: 'full'},
+    // { path: 'home', component: HomeComponent },
+
+    // {path:'user', component:UserRegisterComponent},
+    // {path: 'courses', title:'Courses', component: CoursesComponent},
+    // {path: 'home/courses', title:'Courses', component: CoursesComponent},
+    // {path: 'about',title:'about', component: AboutComponent},
+    // {path:'contact',title:'contact',component: ContactComponent},
+    // // {path:'home/courses/signup', component:SignupComponent},
+
+    // {path:'mycourses', component:MycoursesComponent},
+    // {path:'mycourses/:id', component:MycoursesComponent},
+    // { path: 'add-course', component: AddCourseComponent },
+    // { path: 'enrolled', component: EnrollPageComponent },
+
+    // { path: 'admin', component: CoursesComponent, children: [
+    //     { path: 'user-management', component: AdminUserManagementComponent },
+    //     { path: 'course-management', component: AdminCourseManagementComponent, children: [
+    //         { path: 'add-course', component: AddCourseComponent }
+    //       ]
+    //     },
+    //     { path: 'progress-management', component: AdminProgressTrackingComponent },
+    //     { path: 'feedback-management', component: FeedbackComponent },
+    // ]},
+
+    // // {path:'mycourses', component:MycoursesComponent},
+    // {path:'forms',component:SignupLoginComponent},
+    // {path:'', redirectTo:'mycourses', pathMatch: 'full'},
+
+    // { path: 'alogin', component: AdminloginComponent },  // Route for login page
+    // { path: 'courses', component: CoursesComponent },  // Route for admin panel
+    // { path: '', redirectTo: '/alogin', pathMatch: 'full' },  // Default route to login
+    // { path: '**', redirectTo: '/alogin' }
+   
+
     {path:'', redirectTo:'home', pathMatch: 'full'},
     { path: 'home', component: HomeComponent },
 
@@ -31,7 +66,6 @@ export const routes: Routes = [
     {path:'mycourses', component:MycoursesComponent},
     {path:'mycourses/:id', component:MycoursesComponent},
     { path: 'add-course', component: AddCourseComponent },
-    { path: 'enrolled', component: EnrollPageComponent },
 
     { path: 'admin', component: CoursesComponent, children: [
         { path: 'user-management', component: AdminUserManagementComponent },
@@ -47,9 +81,11 @@ export const routes: Routes = [
     {path:'forms',component:SignupLoginComponent},
     {path:'', redirectTo:'mycourses', pathMatch: 'full'},
 
+    // { path: 'enroll', component: EnrollPageComponent },
+
+
     { path: 'alogin', component: AdminloginComponent },  // Route for login page
     { path: 'courses', component: CoursesComponent },  // Route for admin panel
     { path: '', redirectTo: '/alogin', pathMatch: 'full' },  // Default route to login
-    { path: '**', redirectTo: '/alogin' }
-   
+    { path: '**', redirectTo: '/alogin' } 
 ];
