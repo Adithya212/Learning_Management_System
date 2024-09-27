@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CourseService } from '../services/course-service/course.service';
@@ -29,34 +29,34 @@ export interface Enrollment {
 @Component({
   selector: 'app-enroll-page',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,NgClass,FormsModule],
+  imports: [RouterLink,RouterOutlet,NgClass,FormsModule,NgFor],
   templateUrl: './enroll-page.component.html',
   styleUrl: './enroll-page.component.css'
 })
 export class EnrollPageComponent{
 
-  courses :Course[]=[];
-  enroll:Enrollment[]=[];
-  currentVideoUrl = '';
-  currentCourseId=0;
-  progressPercentage = 0;
-  constructor(private enrollService: EnrollmentService) { }
+  // courses :Course[]=[];
+  // enroll:Enrollment[]=[];
+  // currentVideoUrl = '';
+  // currentCourseId=0;
+  // progressPercentage = 0;
+  // constructor(private enrollService: EnrollmentService) { }
 
-  ngOnInit(): void {
-    this.loadEnrolledCourses();
-  }
+  // ngOnInit(): void {
+  //   this.loadEnrolledCourses();
+  // }
 
-  loadEnrolledCourses() {
-    // Fetch enrolled courses (use actual userId)
-    this.enrollService.getEnrollments().subscribe(data => {
-      this.enroll = data;
-    });
-  }
+  // loadEnrolledCourses() {
+  //   // Fetch enrolled courses (use actual userId)
+  //   this.enrollService.getEnrollments().subscribe(data => {
+  //     this.enroll = data;
+  //   });
+  // }
 
-  playVideo(courseId: number, videoUrl: string) {
-    this.currentCourseId = courseId;
-    this.currentVideoUrl = videoUrl;
-    this.progressPercentage = 0; // reset progress for a new video
-  }
+  // playVideo(courseId: number, videoUrl: string) {
+  //   this.currentCourseId = courseId;
+  //   this.currentVideoUrl = videoUrl;
+  //   this.progressPercentage = 0; // reset progress for a new video
+  // }
 
 }

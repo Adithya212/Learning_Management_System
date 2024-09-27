@@ -13,6 +13,7 @@ import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { EnrollPageComponent } from './enroll-page/enroll-page.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 
 
 
@@ -46,5 +47,9 @@ export const routes: Routes = [
     {path:'forms',component:SignupLoginComponent},
     {path:'', redirectTo:'mycourses', pathMatch: 'full'},
 
+    { path: 'alogin', component: AdminloginComponent },  // Route for login page
+    { path: 'courses', component: CoursesComponent },  // Route for admin panel
+    { path: '', redirectTo: '/alogin', pathMatch: 'full' },  // Default route to login
+    { path: '**', redirectTo: '/alogin' }
    
 ];
