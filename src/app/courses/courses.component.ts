@@ -39,4 +39,9 @@ export class CoursesComponent {
     this.router.navigate([`/admin/${section}`]);
     this.closeSidebar(); // Close the sidebar after navigation
   }
+
+  logout() {
+    localStorage.removeItem('loggedIn');  // Clear login status from localStorage
+    this.router.navigate(['/alogin']);      // Navigate back to login page after logout
+  }
 }

@@ -1,128 +1,120 @@
 /* Body and Page Setup */
 body {
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0;
-    background-color: #f8f9fa; /* Light background for contrast */
-  }
-  
-  /* Form container styling */
-  .form-container {
-    width: 100%;
-    max-width: 500px; /* Fit form within one page */
-    padding: 30px;
-    background-color: #fff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    font-family: 'Arial', sans-serif;
-  
-  }
-  
-  /* Form Title */
-  h1 {
-    text-align: center;
-    font-size: 28px; /* Slightly smaller for better fit */
-    color: #2c3e50;
-    margin-bottom: 25px;
-  }
-  
-  /* Label Styling */
-  label {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 8px;
-    display: block;
-    font-weight: bold;
-  }
-  
-  /* Input & Textarea Styling */
-  input[type="text"], textarea {
-    width: 60%; /* Full width for inputs */
-    height: 40px;
-    padding: 14px;
-    margin-bottom: 20px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-  
-  input[type="text"]:focus, textarea:focus {
-    border-color: #6c5ce7;
-    outline: none;
-    box-shadow: 0 0 8px rgba(108, 92, 231, 0.2);
-  }
-  
-  /* Textarea for multiple lines of text */
-  textarea {
-    resize: vertical;
-    height: 40px;
-  }
-  
-  /* Button Group Styling */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+  background-color: #f8f9fa; /* Light background for contrast */
+}
+
+/* Form container styling */
+.form-container {
+  width: 100%;
+  max-width: 400px; /* Smaller width for the form */
+  padding: 20px; /* Reduced padding */
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Arial', sans-serif;
+  border: 2px solid #6c5ce7; /* Cute border color */
+  margin-left: 550px;
+}
+
+/* Form Title */
+h1 {
+  text-align: center;
+  font-size: 24px; /* Slightly smaller font size */
+  color: #2c3e50;
+  margin-bottom: 15px; /* Reduced margin */
+}
+
+/* Label Styling */
+label {
+  font-size: 14px; /* Smaller label font size */
+  color: #333;
+  margin-bottom: 6px; /* Reduced margin */
+  display: block;
+  font-weight: bold;
+}
+
+/* Input & Textarea Styling */
+input[type="text"], textarea {
+  width: 100%; /* Full width for inputs */
+  padding: 10px; /* Smaller padding */
+  margin-bottom: 15px; /* Reduced margin */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px; /* Smaller font size */
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-color: #6c5ce7;
+  outline: none;
+  box-shadow: 0 0 8px rgba(108, 92, 231, 0.2);
+}
+
+/* Textarea for multiple lines of text */
+textarea {
+  resize: vertical;
+  height: auto; /* Allow height to be auto */
+}
+
+/* Button Group Styling */
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Space between buttons */
+  align-items: center;
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: 10px 15px; /* Smaller padding */
+  font-size: 14px; /* Smaller font size */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #6c5ce7;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1; /* Allow button to grow */
+}
+
+.submit-btn:hover {
+  background-color: #5b51d8;
+  transform: translateY(-2px);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  padding: 10px 15px; /* Smaller padding */
+  font-size: 14px; /* Smaller font size */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #f44336;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1; /* Allow button to grow */
+}
+
+.cancel-btn:hover {
+  background-color: #e03b2f;
+  transform: translateY(-2px);
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 400px) {
   .button-group {
-    display: flex;
-    justify-content: space-between; /* Space between buttons */
-    align-items: center;
-  }
-  
-  /* Submit Button */
-  .submit-btn {
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #6c5ce7;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    position: relative; /* For animation */
-    flex: 1; /* Allow button to grow */
-    
-  }
-  
-  .submit-btn:hover {
-    background-color: #5b51d8;
-    transform: translateY(-2px);
-  }
-  
-  /* Cancel Button */
-  .cancel-btn {
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #f44336;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    flex: 1; /* Allow button to grow */
-  }
-  
-  .cancel-btn:hover {
-    background-color: #e03b2f;
-    transform: translateY(-2px);
-  }
-  
-  /* Form Transitions */
-  .btn:hover {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Media Queries for Mobile Responsiveness */
-  @media (max-width: 500px) {
-    .button-group {
       flex-direction: column; /* Stack buttons on smaller screens */
-    }
-  
-    .submit-btn,
-    .cancel-btn {
+  }
+
+  .submit-btn,
+  .cancel-btn {
       width: 100%; /* Full width on smaller screens */
       margin: 5px 0; /* Vertical spacing */
-    }
   }
-  
+}
