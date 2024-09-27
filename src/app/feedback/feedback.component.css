@@ -1,0 +1,85 @@
+/* Global styling for comfortable reading */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #4a4a4a;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 32px;
+    color: #2c3e50;
+  }
+  
+  button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #6c5ce7;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5b51d8;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for tables */
+  .styled-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+  }
+  
+  .styled-table thead tr {
+    background-color: #6c5ce7;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .styled-table th, .styled-table td {
+    padding: 12px 15px;
+  }
+  
+  .styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #6c5ce7;
+  }
+  
+  .styled-table tbody tr:hover {
+    background-color: #f1f2f6;
+  }
+  
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    button {
+      font-size: 18px;
+      padding: 14px 25px;
+    }
+  
+    .styled-table {
+      width: 80%;
+    }
+  }
+  

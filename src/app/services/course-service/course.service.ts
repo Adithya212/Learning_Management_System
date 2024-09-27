@@ -10,18 +10,17 @@ export class CourseService {
   //  token = localStorage.getItem('token');  // Fetch the token from localStorage
   //  headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
   constructor(private http: HttpClient) {}
-
-  getCourses(): Observable<any> {
+  private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');  // Fetch the token from localStorage
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+  getCourses(): Observable<any> {
+    const headers = this.getHeaders();
     return this.http.get<any>(this.apiUrl, { headers });
   }
 
   addCourse(course: any): Observable<any> {
-    const token = localStorage.getItem('token');  // Fetch the token from localStorage
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<any>(this.apiUrl, course);
+    const headers = this.getHeaders();
+    return this.http.post<any>(this.apiUrl, course, { headers });
   }
-
 }

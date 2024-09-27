@@ -7,17 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class AccountService {
 
-  private baseUrl = 'http://localhost:8080/auth/signup';  // Backend URL
+  private baseUrl = 'http://localhost:8080/auth';  // Backend URL
 
   constructor(private http: HttpClient) { }
 
   // Signup API call
   signup(userData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}`, userData);
+    return this.http.post(`${this.baseUrl}/signup`, userData);
   }
 
   // Login API call
   login(credentials: any): Observable<any> {
+    
     return this.http.post(`${this.baseUrl}/login`, credentials);
   }
 

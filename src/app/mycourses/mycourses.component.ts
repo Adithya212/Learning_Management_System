@@ -38,7 +38,6 @@ export class MycoursesComponent implements OnInit {
 
   courses: Course[]= [];
   filteredCourses: Course[] = [];
-  // enrollments = {user:'',course:'',status:'',progress:'',startDate:'',completionDate:''}
   enrollments: Enrollment[]= [];
 
 

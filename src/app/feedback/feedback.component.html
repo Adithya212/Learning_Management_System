@@ -1,1 +1,21 @@
-<p>feedback works!</p>
+   <div *ngIf="feedbacks.length > 0">
+    <h2>Feedbacks</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>User Name</th>
+          <th>Feedback</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feedback of feedbacks">
+          <td>{{ feedback.enrollment.course.courseName}}</td>
+          <td>{{  feedback.enrollment.user.email }}</td>
+          <td>{{  feedback.comment}}</td>
+          <td>{{ feedback.rating}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -18,6 +18,7 @@ export interface Enrollment {
   };
   course: {
     id: number;
+    courseName: string;
   };
   status: string;
   progress: number;
