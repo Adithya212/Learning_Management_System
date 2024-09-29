@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { MycoursesComponent } from './mycourses/mycourses.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AuthGuard } from './services/auth-service/auth.guard';
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch: 'full'},
@@ -31,4 +33,10 @@ export const routes: Routes = [
 
     {path:'forms',component:SignupLoginComponent},
     {path:'', redirectTo:'mycourses', pathMatch: 'full'},
+
+
+    { path: 'alogin', component: AdminloginComponent },  // Route for login page
+    { path: 'courses', component: CoursesComponent ,canActivate: [AuthGuard] },  // Route for admin panel
+    { path: '', redirectTo: '/alogin', pathMatch: 'full' },  // Default route to login
+    { path: '**', redirectTo: '/alogin' } 
 ];

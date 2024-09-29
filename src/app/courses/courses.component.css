@@ -79,11 +79,12 @@
   padding: 10px 0; /* Adjust padding for vertical centering */
   cursor: pointer;
   border-radius: 5px;
-  width: calc(100% - 40px); /* Full width within the sidebar minus padding */
+  width: calc(70% - 0px); /* Full width within the sidebar minus padding */
   text-align: center; /* Center the text */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-  margin-left: 20px; /* Centered with left and right padding */
+  margin-top: 390px;
+  /* margin-left: 1370px;                     */
+  /* Centered with left and right padding */
   transition: background-color 0.3s;
 }
 
