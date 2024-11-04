@@ -6,6 +6,8 @@ export interface Enrollment {
     course: {
       id: number;
       courseName: string;
+      videoUrl:string;
+      description:string;
     };
     status: string;
     progress: number;

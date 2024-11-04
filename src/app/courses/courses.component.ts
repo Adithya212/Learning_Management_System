@@ -43,6 +43,6 @@ export class CoursesComponent {
 
   logout() {
     localStorage.removeItem('loggedIn');  // Clear login status from localStorage
-    this.router.navigate(['/alogin']);      // Navigate back to login page after logout
+    this.router.navigate(['/home']);      // Navigate back to login page after logout
   }
 }

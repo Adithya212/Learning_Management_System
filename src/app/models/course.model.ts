@@ -5,5 +5,6 @@ export interface Course {
     enrolledDate: string;
     features: string[];
     description: string;
+    videoUrl:string;
   }
 

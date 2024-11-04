@@ -15,10 +15,14 @@
           <a routerLink="home" class="nav-link">HOME</a>
           <a routerLink="about" routerLinkActive="active" class="nav-link">ABOUT</a>      
             <a class="nav-link dropdown-toggle" routerLink="mycourses" role="button" data-bs-toggle="dropdown" >
-              myCourses
+              Courses
             </a>
+            <a routerLink="mylearning" class="nav-link">MyLearning</a>
           <a routerLink="contact" class="nav-link">CONTACT</a>
           <a routerLink="courses" class="nav-link">ADMIN</a>
+          <li class="nav-item">
+            <button (click)="logout()" class="btn btn-outline-danger">Logout</button>
+          </li>
           <h2  class="dates" style="color: brown; font-style: italic; float: left;">{{currentDate | date}}</h2>
         </div>
   

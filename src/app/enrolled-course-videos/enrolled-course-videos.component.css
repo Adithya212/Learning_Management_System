@@ -1,0 +1,46 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  h2 {
+    color: #4A90E2; /* Bright blue */
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    background-color: #F9F9F9;
+  }
+  
+  .card:hover {
+    transform: scale(1.01);
+  }
+  
+  .course-card {
+    padding: 5px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    color: #D5006D; /* Vibrant pink */
+    margin-bottom: 5px;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    color: #333; /* Dark gray */
+    margin-bottom: 10px;
+  }
+  
+  .video-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  iframe {
+    border-radius: 10px;
+  }
+  

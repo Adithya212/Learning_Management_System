@@ -21,7 +21,7 @@ export class SignupLoginComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private accountService: AccountService,private http: HttpClient ) {
     // Initialize the login and signup forms with basic required validation
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
@@ -57,7 +57,7 @@ export class SignupLoginComponent {
     // }
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-      console.log('Sending login data:', loginData);
+      console.log('NOTE: Sending login data:', loginData);
       
       this.accountService.login(loginData).subscribe({
         next: (response) => {

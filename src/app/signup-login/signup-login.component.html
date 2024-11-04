@@ -11,11 +11,11 @@
       <input 
         class="form-input" 
         type="text" 
-        formControlName="username" 
-        placeholder="Username" 
-        [ngClass]="{'is-invalid': loginForm.controls['username'].invalid && loginForm.controls['username'].touched}" 
+        formControlName="email" 
+        placeholder="Email" 
+        [ngClass]="{'is-invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].touched}" 
         required />
-      <div *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched" class="error-message">
+      <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="error-message">
         Username is required.
       </div>
 

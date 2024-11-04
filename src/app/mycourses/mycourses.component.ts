@@ -52,9 +52,9 @@ export class MycoursesComponent implements OnInit {
 
   // On Enroll button click
   enroll(courseId: number) {
-    const id = 1;
+    const userId = 2;
     const enrollmentData = {
-      id: id,        // Assuming userId is available
+      userId: userId,        // Assuming userId is available
       courseId: courseId     // Course being enrolled
     };
 

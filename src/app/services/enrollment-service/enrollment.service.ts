@@ -17,6 +17,10 @@ export class EnrollmentService {
     const headers = this.getHeaders();
     return this.http.get<any>(this.apiUrl,{headers});
   }
+  getEnrollmentsByUserId(userId: number): Observable<any[]> {
+    const headers = this.getHeaders();
+    return this.http.get<any[]>(`${this.apiUrl}/users/${userId}`,{headers});
+  }
 
   addEnrollments(enrollments: any): Observable<any> {
       const headers = this.getHeaders();
